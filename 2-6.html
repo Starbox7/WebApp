@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Output 요소 예제</title>
+</head>
+
+<body>
+    <form onsubmit="return false"
+        oninput="totalamount.value = Math.round(principal.value * (Math.pow(1 + interest.value / 100, period.value)) * 100) / 100;">
+        원 금 <input name="principal" id="principal" type="number">
+        <br />
+        기 간 <input name="period" id="period" type="number">
+        <br />
+        이 율 <input name="interest" id="interest" type="number">
+        <br />
+        총 액 <output name="totalamount" id="totalamount" for="principal period interest"></output>
+        <br />
+    </form>
+</body>
+
+</html>

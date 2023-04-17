@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #myList ol li {
+            font-style: italic;
+        }
+
+        div>p {
+            color: blue;
+        }
+
+        #sibling1+li {
+            color: red;
+        }
+
+        #sibling3~li {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <h3> CSS 적용 방법 </h3>
+    <div id="myList">
+        <ol>
+            <li>인라인</li>
+            <li>외부</li>
+            <li>내부</li>
+        </ol>
+    </div>
+    <div class="container">
+        <article>
+            <p>Hello world</p>
+        </article>
+        <p>Hello mobile web app</p>
+    </div>
+    <ol>
+        <li id="sibling1">형제 1</li>
+        <li id="sibling2">형제 2</li>
+        <li id="sibling3">형제 3</li>
+        <li id="sibling4">형제 4</li>
+        <li id="sibling5">형제 5</li>
+    </ol>
+</body>
+
+</html>
