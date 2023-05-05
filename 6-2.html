@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>세션 스토리지 예제</title>
+    <script type="text/javascript">
+      function InsertData() {
+        var hokey = document.getElementById("hokey").value;
+        var hovalue = document.getElementById("hovalue").value;
+        sessionStorage.setItem(hokey, hovalue);
+        document.getElementById("hokey").value = "";
+        document.getElementById("hovalue").value = "";
+      }
+      function SearchData() {
+        var hokey = document.getElementById("getkey").value;
+        var hovalue = sessionStorage.getItem(hokey);
+        alert(hokey + " key value: " + hovalue);
+        document.getElementById("getkey").value = "";
+      }
+      function DeleteData() {
+        var hokey = document.getElementById("getkey").value;
+        var hovalue = sessionStorage.removeItem(hokey);
+        alert(hokey + "키의 값: " + hovalue);
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Session Storage Demo</h1>
+    Key : <input id="hokey" type="text" /><br />
+    Value : <input id="hovalue" type="text" />
+    <input type="button" value="SAVE" onclick="InsertData()" /><br /><br />
+    Key : <input id="getkey" type="text" />
+    <input type="button" value="Search" onclick="SearchData()" />
+    <input type="button" value="Delete" onclick="DeleteData()" />
+  </body>
+</html>

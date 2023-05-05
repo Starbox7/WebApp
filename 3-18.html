@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS 전환 예제</title>
+    <style type="text/css">
+      .stable {
+        position: relative;
+        height: 320px;
+      }
+      .stable .balloon {
+        position: absolute;
+        bottom: 0;
+        width: 100px;
+        height: 163px;
+        background: url(egg.gif) no-repeat;
+        background-size: 100% 100%;
+      }
+      .stable:hover .balloon {
+        bottom: 157px;
+        transition-duration: 3s;
+      }
+      .stable .balloon.default {
+        left: 39px;
+        background-image: url(egg.gif);
+      }
+      .stable .balloon.linear {
+        left: 149px;
+        transition-timing-function: linear;
+      }
+      .stable .balloon.ease-in {
+        left: 259px;
+        transition-timing-function: ease-in;
+      }
+      .stable .balloon.ease-out {
+        left: 369px;
+        transition-timing-function: ease-out;
+      }
+      .stable .balloon.ease-in-out {
+        left: 479px;
+        transition-timing-function: ease-in-out;
+      }
+      .stable .balloon.cubic-bezier {
+        left: 589px;
+        transition-timing-function: cubic-bezier(0, 1, 1, 0);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stable">
+      <div class="balloon default">default</div>
+      <div class="balloon linear">linear</div>
+      <div class="balloon ease-in">ease-in</div>
+      <div class="balloon ease-out">ease-out</div>
+      <div class="balloon ease-in-out">ease-in-out</div>
+      <div class="balloon cubic-bezier">cubic-bezier</div>
+    </div>
+  </body>
+</html>
