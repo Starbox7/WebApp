@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 500px;
+      margin-top: 20px;
+      margin-bottom: 40px;
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+  </style>
+  <body>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      "
+    >
+      <button onclick="initMap()" style="margin-bottom: 30px">
+        농구 경기장을 찾기 위한 위치 정보 사용 승인
+      </button>
+      <div id="mapholder" style="width: 500px; height: 250px"></div>
+      <h1>Google Maps APIs 서비스 미지원으로 인한 지도 출력 불가 상태</h1>
+      <script
+        async
+        defer
+        src="https://maps.googleapis.com/maps/api/js?key=서버인증키&callback=initMap"
+      ></script>
+
+      <script>
+        var map, infoWindow;
+
+        function initMap() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+          } else {
+            document.getElementById("demo").innerHTML =
+              "이 브라우저는 지리적 위치를 지원하지 않습니다.";
+          }
+        }
+
+        function showPosition(position) {
+          var latlon = new google.maps.LatLng(
+            position.coords.latitude,
+            position.coords.longitude
+          );
+          map = new google.maps.Map(document.getElementById("mapholder"), {
+            center: latlon,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            mapTypeControl: false,
+            navigationControlOptions: {
+              style: google.maps.NavigationControlStyle.SMALL,
+            },
+          });
+          var marker = new google.maps.Marker({
+            position: latlon,
+            map: map,
+            title: "당신의 현 위치...",
+          });
+        }
+
+        function showError(error) {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              document.getElementById("demo").innerHTML =
+                "사용자가 지리적 위치에 대한 요청을 거부하였습니다.";
+              break;
+            case error.POSITION_UNAVAILABLE:
+              document.getElementById("demo").innerHTML =
+                "위치 정보를 이용할 수 없습니다.";
+              break;
+            case error.TIMEOUT:
+              document.getElementById("demo").innerHTML =
+                "위치 요청이 시간 초과되었습니다.";
+              break;
+            case error.UNKNOWN_ERROR:
+              document.getElementById("demo").innerHTML =
+                "알 수 없는 오류가 발생했습니다.";
+              break;
+          }
+        }
+      </script>
+
+      <img
+        src="https://noticon-static.tammolo.com/dgggcrkxq/image/upload/v1567593192/noticon/za5oft8gpi5yabrlvgfp.gif"
+      />
+
+      <h1 style="margin-top: 20px">국내 농구 경기장 목록</h1>
+      <table>
+        <tr>
+          <th>경기장</th>
+          <th>주소</th>
+          <th>전화번호</th>
+        </tr>
+        <tr>
+          <td>잠실실내체육관</td>
+          <td>서울특별시 송파구 올림픽로 240</td>
+          <td>02-2240-8800</td>
+        </tr>
+        <tr>
+          <td>용인실내체육관</td>
+          <td>경기도 용인시 수지구 동천동 499</td>
+          <td>031-324-1234</td>
+        </tr>
+        <tr>
+          <td>고양실내체육관</td>
+          <td>경기도 고양시 덕양구 화정동 965</td>
+          <td>031-123-4567</td>
+        </tr>
+        <tr>
+          <td>대전실내체육관</td>
+          <td>대전광역시 중구 대흥동 416-5</td>
+          <td>042-987-6543</td>
+        </tr>
+        <tr>
+          <td>부산실내체육관</td>
+          <td>부산광역시 부산진구 전포동 123-4</td>
+          <td>051-789-0123</td>
+        </tr>
+        <tr>
+          <td>인천실내체육관</td>
+          <td>인천광역시 남동구 구월동 789</td>
+          <td>032-456-7890</td>
+        </tr>
+        <tr>
+          <td>광주실내체육관</td>
+          <td>광주광역시 동구 서석동 987</td>
+          <td>062-012-3456</td>
+        </tr>
+        <tr>
+          <td>대구실내체육관</td>
+          <td>대구광역시 중구 대봉동 321</td>
+          <td>053-987-6543</td>
+        </tr>
+        <tr>
+          <td>울산실내체육관</td>
+          <td>울산광역시 남구 삼산동 567</td>
+          <td>052-321-6540</td>
+        </tr>
+        <tr>
+          <td>제주실내체육관</td>
+          <td>제주특별자치도 제주시 용담동 123</td>
+          <td>064-012-3456</td>
+        </tr>
+        <tr>
+          <td>창원실내체육관</td>
+          <td>경상남도 창원시 의창구 사림동 789</td>
+          <td>055-987-6543</td>
+        </tr>
+        <tr>
+          <td>강릉실내체육관</td>
+          <td>강원도 강릉시 교동 321</td>
+          <td>033-456-7890</td>
+        </tr>
+        <tr>
+          <td>전주실내체육관</td>
+          <td>전라북도 전주시 완산구 중앙동 654</td>
+          <td>063-012-3456</td>
+        </tr>
+        <tr>
+          <td>천안실내체육관</td>
+          <td>충청남도 천안시 동남구 불당동 789</td>
+          <td>041-987-6543</td>
+        </tr>
+        <tr>
+          <td>여수실내체육관</td>
+          <td>전라남도 여수시 중앙동 321</td>
+          <td>061-321-6540</td>
+        </tr>
+        <tr>
+          <td>수원실내체육관</td>
+          <td>경기도 수원시 팔달구 권선동 123</td>
+          <td>031-012-3456</td>
+        </tr>
+        <tr>
+          <td>춘천실내체육관</td>
+          <td>강원도 춘천시 석사동 789</td>
+          <td>033-987-6543</td>
+        </tr>
+        <tr>
+          <td>군산실내체육관</td>
+          <td>전라북도 군산시 임피동 321</td>
+          <td>063-321-6540</td>
+        </tr>
+        <tr>
+          <td>창원실내체육관</td>
+          <td>경상남도 창원시 의창구 사림동 654</td>
+          <td>055-012-3456</td>
+        </tr>
+        <tr>
+          <td>청주실내체육관</td>
+          <td>충청북도 청주시 상당구 중앙로2가 789</td>
+          <td>043-987-6543</td>
+        </tr>
+      </table>
+      <a href="/index.html">Copyright by Starbox918</a>
+    </div>
+  </body>
+</html>
